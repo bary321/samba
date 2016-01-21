@@ -1,0 +1,33 @@
+[global]
+    dos charset = {{ g[0] }}
+    server string = {{ g[1] }}
+    map to guest = {{ g[2] }}
+    obey pam restrictions = {{ g[3] }}
+    pam password change = {{ g[4] }}
+    passwd program = {{ g[5] }}
+    passwd chat = {{ g[6] }}
+    unix password sync = {{ g[7] }}
+    syslog = {{ g[8] }}
+    log file = {{ g[9]}}
+    max log size = {{ g[10] }}
+    dns proxy = {{ g[11] }}
+    usershare allow guests = {{ g[12] }}
+    panic action = {{ g[13] }}
+    idmap config * : backend = {{ g[15] }}
+
+{% for i in dire %}
+[{{ i[0] }}]
+    path = {{ i[1] }}
+    {% if i[2] %}
+    valid users = {{ i[2] }}
+    {% endif %}
+    force users = {{ i[3] }}
+    force group = {{ i[4] }}
+    read only = {{ i[5] }}
+    create mask = {{ i[6] }}
+    directory mask = {{ i[7] }}
+    guest ok = {{ i[8] }}
+    {% if i[9]  %}
+    write list = {{ i[9] }}
+    {% endif %}
+{% endfor %}
