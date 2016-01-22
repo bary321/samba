@@ -48,7 +48,8 @@ class BaseUser:
                "user shell": self.shell
                }
 
-    def userexist(self):
+    @staticmethod
+    def userexist():
         pass
 
     def changeinitgroup(self):
@@ -57,9 +58,11 @@ class BaseUser:
     def changepasswd(self):
         pass
 
+    @staticmethod
     def createuser(self):
         pass
 
+    @staticmethod
     def deluser(self):
         pass
 
@@ -79,6 +82,9 @@ class BaseUser:
         pass
 
     def add(self):
+        pass
+
+    def adduser(self):
         pass
 
     def addusertogroup(self):

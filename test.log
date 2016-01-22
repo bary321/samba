@@ -71,3 +71,8 @@
 2016-01-21 17:12:13,755-logger.basedata-INFO-update direct set write_list = 'a' where name = 'tmp'
 2016-01-21 17:15:39,792-logger.basedata-INFO-update direct set write_list = '' where name = 'tmp'
 2016-01-21 17:15:39,927-logger.basedata-INFO-update direct set write_list = 'a' where name = 'tmp'
+2016-01-22 14:00:45,252-logger.fabfile-INFO-test
+2016-01-22 18:07:58,007-logger.basedata-INFO-update direct set valid_users = 'a,aaaa' where name = 'tmp'
+2016-01-22 18:07:58,141-logger.basedata-INFO-update direct set valid_users = 'a' where name = 'tmp'
+2016-01-22 18:07:58,240-logger.basedata-INFO-update direct set write_list = 'a,aaa' where name = 'tmp'
+2016-01-22 18:07:58,335-logger.basedata-INFO-update direct set write_list = 'a' where name = 'tmp'

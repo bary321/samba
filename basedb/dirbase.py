@@ -9,24 +9,27 @@ __metaclass__ = type
 log = logging.getLogger("logger.dirbase")
 
 
-class DirBase:
-    def __init__(self, dire):
+class DirBase(object):
+    def __new__(cls, dire):
         if dire:
             if type(dire) != str:
                 errors = "the type of directory name is wrong"
                 raise TypeError(errors)
-            self.obj = BaseData()
-            if not self.obj.direxit(dire=dire):
+            obj = BaseData()
+            if not obj.direxit(dire=dire):
                 errors = "the directory name '" + dire + "' don't exist"
                 raise NameError(errors)
-            self.name = dire
+            return object.__new__(cls)
         else:
             errors = "Name don't have value"
             raise ValueError(errors)
 
+    def __init__(self, dire):
+        self.obj = BaseData()
+        self.name = dire
+
     def getalldir(self):
         return self.obj.getalldire()
-
 
     def getall(self):
         return self.obj.getusers(dire=self.name)
@@ -55,6 +58,7 @@ class DirBase:
     def writelistexit(self, user):
         return self.obj.writelistexist(dire=self.name, user=user)
 
+
 if __name__ == "__main__":
     a = DirBase(dire="tmp")
     a.addvaliduser(user="aaaa")
@@ -67,4 +71,3 @@ if __name__ == "__main__":
     a.delwriteuser(user="aaa")
     print a.getwritelist()
     b = DirBase(1)
-
