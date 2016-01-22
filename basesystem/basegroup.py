@@ -42,3 +42,30 @@ class BaseGroup:
                "group id": self.id,
                "group numbers": self.numbers
                }
+
+    def groupexist(self):
+        pass
+
+    def delgroup(self):
+        pass
+
+    def creategroup(self):
+        pass
+
+    def changegroupID(self):
+        pass
+
+    def getgroupID(self):
+        pass
+
+    def getnumbers(self):
+        pass
+
+    def numberexist(self):
+        pass
+
+    def addnumbers(self):
+        pass
+
+    def delnumbers(self):
+        pass

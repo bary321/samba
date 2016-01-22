@@ -47,3 +47,39 @@ class BaseDirection:
             log.error(error)
             return -1
         return 0
+
+    def getall(self):
+        pass
+
+    def changejurisdiction(self):
+        pass
+
+    def createsub(self):
+        pass
+
+    def chmod(self):
+        pass
+
+    def chgroup(self):
+        pass
+
+    def getacl(self):
+        pass
+
+    def setacl(self):
+        pass
+
+    def setaclgroup(self):
+        pass
+
+    def setacluser(self):
+        pass
+
+    def setumask(self):
+        pass
+
+    def getumask(self):
+        pass
+
+    def aclexist(self):
+        pass

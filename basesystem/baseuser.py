@@ -48,6 +48,39 @@ class BaseUser:
                "user shell": self.shell
                }
 
+    def userexist(self):
+        pass
+
+    def changeinitgroup(self):
+        pass
+
+    def changepasswd(self):
+        pass
+
+    def createuser(self):
+        pass
+
+    def deluser(self):
+        pass
+
+    def initpasswd(self):
+        pass
+
+    def changehomedir(self):
+        pass
+
+    def changeshell(self):
+        pass
+
+    def changecommet(self):
+        pass
+
+    def changeID(self):
+        pass
+
+    def add(self):
+        pass
+
 
 if __name__ == "__main__":
     a = BaseUser()
