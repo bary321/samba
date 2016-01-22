@@ -81,6 +81,9 @@ class BaseUser:
     def add(self):
         pass
 
+    def addusertogroup(self):
+        pass
+
 
 if __name__ == "__main__":
     a = BaseUser()

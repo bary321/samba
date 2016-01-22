@@ -83,3 +83,29 @@ class BaseDirection:
 
     def aclexist(self):
         pass
+
+    def aclgroup(self, groupname):
+        pass
+
+    def acluser(self, user):
+        pass
+
+    def deldir(self):
+        pass
+
+    def mvdir(self):
+        pass
+
+    def cpdir(self):
+        pass
+
+
+
+
+
+
+
+
+
+
+

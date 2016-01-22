@@ -52,6 +52,9 @@ class BaseGroup:
     def creategroup(self):
         pass
 
+    def addgroupdb(self):
+        pass
+
     def changegroupID(self):
         pass
 
