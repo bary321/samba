@@ -2,15 +2,44 @@
 
 from __future__ import unicode_literals
 import logger
+from jinja2 import Template
+import commands
 
 __author__ = 'bary'
 __metaclass__ = type
 
+grep = r"cat /etc/passwd | grep '{{ user }}'"
+addcmd = r"useradd -g {{ initgroup }} -M -s /bin/nologin {{ user }}"
+addgroup = r"useradd -G {{ groupname }}"
+delcmd = r"userdel {{ user }}"
+passwd = r"passwd {{ user }}"
+passwd1 = r"""echo "{{ password }}" | passwd --stdin"""
+csh = r"usermod -s {{ shell }} {{ user }}"
+luser = r"passwd {{ user }} -l"
+uuser = r"passwd {{ user }} -u"
+error = r"A error arise when do cmd '{{ cmd }}': {{ status }}"
+
 log = logger.getLogger('logger.baseuser')
 
 
+def template(temp, **kwargs):
+    templates = Template(temp)
+    return templates.render(kwargs)
+
+
+def docmd(temp, **kwargs):
+    templates = Template(temp)
+    cmd = templates.render(kwargs)
+    err, status = commands.getstatusoutput(cmd)
+    if err:
+        message = template(error, cmd=cmd, status=status)
+        log.error(message)
+        return 1
+    else:
+        return 0
+
 class BaseUser:
-    def __init__(self, name=""):
+    """def __init__(self, name=""):
         self.name = str(name)
         self.id = -1
         self.initgroup = -1
@@ -47,9 +76,12 @@ class BaseUser:
                "user home direction": self.home,
                "user shell": self.shell
                }
+"""
 
-    @staticmethod
-    def userexist():
+    def __init__(self):
+        pass
+
+    def userexist(self, user=""):
         pass
 
     def changeinitgroup(self):
@@ -58,11 +90,9 @@ class BaseUser:
     def changepasswd(self):
         pass
 
-    @staticmethod
     def createuser(self):
         pass
 
-    @staticmethod
     def deluser(self):
         pass
 
@@ -92,4 +122,5 @@ class BaseUser:
 
 
 if __name__ == "__main__":
-    a = BaseUser()
+    print template(luser, user="aaa")
+    print docmd(luser, user="aaa")
