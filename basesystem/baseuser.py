@@ -38,6 +38,7 @@ def docmd(temp, **kwargs):
     else:
         return 0
 
+
 class BaseUser:
     """def __init__(self, name=""):
         self.name = str(name)
