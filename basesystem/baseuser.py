@@ -1,9 +1,12 @@
 # coding:utf-8
 
 from __future__ import unicode_literals
-import logger
-from jinja2 import Template
+
 import commands
+
+from jinja2 import Template
+
+from logger import logger
 
 __author__ = 'bary'
 __metaclass__ = type
@@ -13,8 +16,10 @@ addcmd = r"useradd -g {{ initgroup }} -M -s /bin/nologin {{ user }}"
 addgroup = r"useradd -G {{ groupname }}"
 delcmd = r"userdel {{ user }}"
 passwd = r"passwd {{ user }}"
-passwd1 = r"""echo "{{ password }}" | passwd --stdin"""
+passwd1 = r"""echo "{{ password }}" | passwd --stdin {{ user }}"""
 csh = r"usermod -s {{ shell }} {{ user }}"
+cid = r"usermod -u {{ uid }} {{ user }}"
+chome = r"usermod -d {{ home }} {{ user }}"
 luser = r"passwd {{ user }} -l"
 uuser = r"passwd {{ user }} -u"
 error = r"A error arise when do cmd '{{ cmd }}': {{ status }}"
@@ -83,43 +88,42 @@ class BaseUser:
         pass
 
     def userexist(self, user=""):
-        pass
+        cmd = template(grep, user=user)
+        err, status = commands.getstatusoutput(cmd)
+        if status:
+            return True
+        else:
+            return False
 
-    def changeinitgroup(self):
-        pass
+    def changepasswd(self, user=""):
+        return docmd(passwd, user=user)
 
-    def changepasswd(self):
-        pass
+    def createuser(self, initgroup="", user=""):
+        return docmd(addcmd, initgroup="", user=user)
 
-    def createuser(self):
-        pass
+    def deluser(self, user=""):
+        return docmd(delcmd, user=user)
 
-    def deluser(self):
-        pass
+    def changepasswdnon(self, password="", user=""):
+        return docmd(passwd1, password=password, user=user)
 
-    def initpasswd(self):
-        pass
+    def changehomedir(self, home="", user=""):
+        return docmd(chome, home=home, user=user)
 
-    def changehomedir(self):
-        pass
+    def changeshell(self, shell="", user=""):
+        return docmd(csh, shell=shell, user=user)
 
-    def changeshell(self):
-        pass
+    def changeID(self, uid="", user=""):
+        return docmd(cid, uid=uid, user=user)
 
-    def changecommet(self):
-        pass
+    def addusertogroup(self, groupname=""):
+        return docmd(addgroup, groupname=groupname)
 
-    def changeID(self):
-        pass
+    def userlock(self, user=""):
+        return docmd(luser, user=user)
 
-    def add(self):
-        pass
-
-    def adduser(self):
-        pass
-
-    def addusertogroup(self):
-        pass
+    def userunlock(self, user=""):
+        return docmd(uuser, user=user)
 
 
 if __name__ == "__main__":

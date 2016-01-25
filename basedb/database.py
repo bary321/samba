@@ -3,7 +3,7 @@ import sqlite3
 
 from jinja2 import Environment, FileSystemLoader, Template
 
-import logger
+from logger import logger
 
 __author__ = 'bary'
 __metaclass__ = type

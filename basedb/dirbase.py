@@ -1,7 +1,7 @@
 # coding:utf-8
-from database import BaseData
-import logger
 import logging
+
+from database import BaseData
 
 __author__ = 'bary'
 __metaclass__ = type

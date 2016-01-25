@@ -1,8 +1,10 @@
 # coding:utf-8
-import os
-import logger
 import commands
-from fabric.api import local, lcd, cd, run ,env
+
+from fabric.api import cd, run ,env
+
+from logger import logger
+
 __author__ = 'bary'
 
 log = logger.getLogger("logger.fabfile")

@@ -1,7 +1,8 @@
 # coding:utf-8
 
 from __future__ import unicode_literals
-import logger
+
+from logger import logger
 
 __author__ = 'bary'
 __metaclass__ = type
