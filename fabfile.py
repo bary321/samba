@@ -3,7 +3,7 @@ import commands
 
 from fabric.api import cd, run ,env
 
-from logger import logger
+import logger
 
 __author__ = 'bary'
 

@@ -1,11 +1,13 @@
 # coding:utf-8
 import logging
+import os
 
 __author__ = 'bary'
-
-filepath = r"E:\workstation\samba\test.log"
-
-logger = logging.getLogger('logger')
+if os.name == "nt":
+    filepath = r"E:\workstation\samba\test.log"
+else:
+    filepath = r"/home/ftp/test.log"
+logger = logging.getLogger('Logger')
 logger.setLevel(logging.DEBUG)
 
 fh = logging.FileHandler(filepath)

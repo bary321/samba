@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 import commands
 
-from logger import logger
+import logger
 
 __author__ = 'bary'
 __metaclass__ = type

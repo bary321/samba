@@ -6,7 +6,7 @@ import commands
 
 from jinja2 import Template
 
-from logger import logger
+import logger
 
 __author__ = 'bary'
 __metaclass__ = type

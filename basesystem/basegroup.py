@@ -2,7 +2,7 @@
 
 from __future__ import unicode_literals
 
-from logger import logger
+import logger
 
 __author__ = 'bary'
 __metaclass__ = type
