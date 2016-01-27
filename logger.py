@@ -7,7 +7,7 @@ if os.name == "nt":
     filepath = r"E:\workstation\samba\test.log"
 else:
     filepath = r"/home/ftp/test.log"
-logger = logging.getLogger('Logger')
+logger = logging.getLogger('logger')
 logger.setLevel(logging.DEBUG)
 
 fh = logging.FileHandler(filepath)

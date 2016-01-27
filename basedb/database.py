@@ -3,18 +3,22 @@ import sqlite3
 
 from jinja2 import Environment, FileSystemLoader, Template
 
-import logger
-
 import os
 
 __author__ = 'bary'
 __metaclass__ = type
 
+if os.name == "nt":
+    import logger
+else:
+    from samba import logger
+
+
 log = logger.getLogger("logger.basedata")
-if os.name == "posix":
+if os.name == "nt":
     pathofdb = r"E:\workstation\samba\dbase.db3"
 else:
-    pathofdb = r"\home\ftp\dbase.db3"
+    pathofdb = r"/home/ftp/samba/dbase.db3"
 tableglobal = r"global"
 tabledir = r"direct"
 

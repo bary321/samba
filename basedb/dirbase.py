@@ -1,12 +1,17 @@
 # coding:utf-8
 import logging
-
+import os
 from database import BaseData
 
 __author__ = 'bary'
 __metaclass__ = type
 
-log = logging.getLogger("logger.dirbase")
+if os.name == "nt":
+    import logger
+else:
+    from samba import logger
+
+log = logger.getLogger("logger.dirbase")
 
 
 class DirBase(object):

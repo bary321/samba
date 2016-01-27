@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="192.168.2.90">
+  <component name="PublishConfigData" autoUpload="Always" serverName="192.168.2.90" uploadOnCheckin="9b177722-67df-4dd4-a2d1-4b2063073a40">
     <serverData>
       <paths name="181">
         <serverdata>
@@ -12,7 +12,7 @@
       <paths name="192.168.2.90">
         <serverdata>
           <mappings>
-            <mapping deploy="/home/ftp" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/home/ftp/samba" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
@@ -38,6 +38,7 @@
         </serverdata>
       </paths>
     </serverData>
+    <option name="myUploadOnCheckinName" value="192.168.2.90" />
     <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>

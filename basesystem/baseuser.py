@@ -6,10 +6,21 @@ import commands
 
 from jinja2 import Template
 
-import logger
+import os
+
+import sys
 
 __author__ = 'bary'
 __metaclass__ = type
+
+if os.name == "nt":
+    import logger
+else:
+    from samba import logger
+
+reload(sys)
+
+sys.setdefaultencoding('utf8')
 
 grep = r"cat /etc/passwd | grep '{{ user }}'"
 addcmd = r"useradd -g {{ initgroup }} -M -s /bin/nologin {{ user }}"
@@ -34,7 +45,10 @@ def template(temp, **kwargs):
 
 def docmd(temp, **kwargs):
     templates = Template(temp)
+    print type(templates)
     cmd = templates.render(kwargs)
+    print type(cmd.strip())
+    print str(cmd).isalnum()
     err, status = commands.getstatusoutput(cmd)
     if err:
         message = template(error, cmd=cmd, status=status)
@@ -127,5 +141,5 @@ class BaseUser:
 
 
 if __name__ == "__main__":
-    print template(luser, user="aaa")
-    print docmd(luser, user="aaa")
+    print template(delcmd, user="aaa")
+    print docmd(delcmd, user="aaa")

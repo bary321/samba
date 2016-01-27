@@ -4,10 +4,15 @@ from __future__ import unicode_literals
 
 import commands
 
-import logger
+import os
 
 __author__ = 'bary'
 __metaclass__ = type
+
+if os.name == "nt":
+    import logger
+else:
+    from samba import logger
 
 log = logger.getLogger('logger.basedirection')
 log.error("test")
