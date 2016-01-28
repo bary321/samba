@@ -61,6 +61,9 @@ class BaseGroup:
                }
 """
 
+    def __init__(self):
+        pass
+
     def groupexist(self, group=""):
         cmd = template(grep, group=group)
         err, status = commands.getstatusoutput(cmd)
@@ -136,8 +139,8 @@ class BaseGroup:
                     temp.append(attribute[0])
             return temp
 
-    def numberexist(self, group="", number=""):
-        if number in self.getnumbers(group=group):
+    def numberexist(self, group="", user=""):
+        if user in self.getnumbers(group=group):
             return True
         else:
             return False
@@ -151,8 +154,16 @@ class BaseGroup:
 
 if __name__ == "__main__":
     a = BaseGroup()
-    print a.getgroupID(group="root")
-    print a.groupexist(group="root")
-    a.groupinfo(group="root")
-    a.getnumbers(group='ftp')
-    print a.getnumberbyid(id="0")
+    print "create group:", a.creategroup(group="tmp")
+    print "group exist:", a.groupexist(group="tmp")
+    print "groupinfo:", a.groupinfo(group="tmp")
+    print "get 'tmp' ID:", a.getgroupID(group="tmp")
+    print "get numbers of 'tmp':", a.getnumbers(group="tmp")
+    print "add numbers :", a.addnumbers(user="temp", group="tmp")
+    print "get numbers of 'tmp':", a.getnumbers(group="tmp")
+    print "number exist:", a.numberexist(group="tmp", user="temp")
+    print "del numbers:", a.delnumbers(user="temp", group="tmp")
+    print "number exist:", a.numberexist(group="tmp", user="temp")
+    print "delgroup:", a.delgroup(group="tmp")
+    print "group exist", a.groupexist(group="tmp")
+    print "groupinfo", a.groupinfo(group="tmp")
