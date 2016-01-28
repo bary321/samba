@@ -61,6 +61,44 @@ def docmd(tmp, **kwargs):
 
 
 class BaseUser:
+    """def __init__(self, name=""):
+        self.name = str(name)
+        self.id = -1
+        self.initgroup = -1
+        self.commet = ""
+        self.home = ""
+        self.shell = ""
+        if self.name:
+            self.__init()
+
+    def __init(self):
+        try:
+            f = open(r"/etc/passwd")
+            for line in f:
+                attribute = line.split(r":")
+                if self.name == attribute[0]:
+                    self.id = int(attribute[2])
+                    self.initgroup = int(attribute[3])
+                    self.commet = attribute[4]
+                    self.home = attribute[5]
+                    self.shell = attribute[6].rstrip("\n")
+                    break
+            f.close()
+            return 0
+        except Exception as e:
+            error = "some error arise when init basesystem user name of " + self.name + ": " + str(e)
+            log.error(error)
+            return -1
+
+    def all(self):
+        print {"user name": self.name,
+               "user id": self.id,
+               "user init group's id": self.initgroup,
+               "user commet": self.commet,
+               "user home direction": self.home,
+               "user shell": self.shell
+               }
+"""
 
     def __init__(self):
         pass
@@ -73,9 +111,41 @@ class BaseUser:
         else:
             return False
 
+    def __userinfo(self, user=""):
+        try:
+            f = open(r"/etc/passwd")
+            for line in f:
+                attribute = line.split(r":")
+                if user == attribute[0]:
+                    id = attribute[2]
+                    initgroup = attribute[3]
+                    commet = attribute[4]
+                    home = attribute[5]
+                    shell = attribute[6].rstrip("\n")
+                    f.close()
+                    return {"name": user,
+                            "id": id,
+                            "group id": initgroup,
+                            "commet": commet,
+                            "home dir": home,
+                            "shell": shell
+                            }
+            return {"name": "",
+                    "id": "",
+                    "group id": "",
+                    "commet": "",
+                    "home dir": "",
+                    "shell": ""
+                    }
+        except Exception as e:
+            error = "some error arise when init basesystem user name of " + user + ": " + str(e)
+            log.error(error)
+            return 1
+
     def userinfo(self, user=""):
-        err, status = commands.getstatusoutput(template(grep, user=user))
-        return status
+        if os.name == "nt":
+            return {}
+        print self.__userinfo(user=user)
 
     def changepasswd(self, user=""):
         return docmd(passwd, user=user)
@@ -120,7 +190,7 @@ if __name__ == "__main__":
     print "user='tmp' exist", a.userexist(user="tmp")
     print a.changehomedir(home="/home/tmp", user="tmp"), "changedir"
     print a.userinfo(user="tmp")
-    print a.changeshell(shell="/bin/sh", user="tmp"),"changeshell"
+    print a.changeshell(shell="/bin/sh", user="tmp"), "changeshell"
     print a.userinfo(user="tmp")
     print a.changeID(uid="9999", user="tmp"), "change id"
     print a.userinfo(user="tmp")
