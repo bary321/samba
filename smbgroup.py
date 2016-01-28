@@ -1,8 +1,9 @@
 # coding:utf-8
 from __future__ import unicode_literals
+
 import logging
-import commands
-from basesystem import basegroup
+
+from system.basesystem import basegroup
 
 __author__ = 'bary'
 __metaclass__ = type
