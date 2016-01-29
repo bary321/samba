@@ -16,6 +16,15 @@ else:
 
 log = logger.getLogger('logger.basedirection')
 
+info = r"ls -ld {{ path }}"
+chgrp = r"chgrp -R {{ groupname }} {{ path }}"
+chown = r"chown -R {{ username }} {{ path }}"
+chmod = r"chmod -R u={{ u }} g={{ g }} o={{ o }} {{ path }}"
+setaclu = r"setacl -mRd u:{{ user }}:{{ u }} {{ path }}"
+setaclo = r"setacl -mRd u::{{ u }} {{ path }}"
+setaclg = r"setacl -mRd g:{{ group }}:{{ u }} {{ path }}"
+setaclm = r"setacl -mRd m:{{ u }} {{ path }}"
+getacl = r"getacl {{ path }}"
 
 
 class BaseDirection:
