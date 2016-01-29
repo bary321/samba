@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="192.168.2.90" uploadOnCheckin="9b177722-67df-4dd4-a2d1-4b2063073a40">
+  <component name="PublishConfigData" serverName="192.168.2.90" uploadOnCheckin="9b177722-67df-4dd4-a2d1-4b2063073a40">
     <serverData>
-      <paths name="181">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
       <paths name="192.168.2.90">
         <serverdata>
           <mappings>
@@ -16,29 +9,7 @@
           </mappings>
         </serverdata>
       </paths>
-      <paths name="52">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="58">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="84">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
     </serverData>
     <option name="myUploadOnCheckinName" value="192.168.2.90" />
-    <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>

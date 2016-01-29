@@ -1,7 +1,7 @@
 # coding:utf-8
 import logging
 import os
-#???
+
 __author__ = 'bary'
 if os.name == "nt":
     filepath = r"E:\workstation\samba\test.log"
