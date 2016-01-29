@@ -154,7 +154,6 @@ class BaseGroup:
 
 if __name__ == "__main__":
     a = BaseGroup()
-
     print "create group:", a.creategroup(group="tmp")
     print "group exist:", a.groupexist(group="tmp")
     print "groupinfo:", a.groupinfo(group="tmp")
