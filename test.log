@@ -97,3 +97,10 @@
 2016-01-28 16:35:14,971-logger.group-ERROR-some error arise when get attribute of root:[Errno 2] No such file or directory: u'/etc/group'
 2016-01-28 16:35:15,032-logger.group-ERROR-some error arise when get attribute of ftp:[Errno 2] No such file or directory: u'/etc/group'
 2016-01-28 16:35:15,032-logger.group-ERROR-some error arise when get attribute of ftp:[Errno 2] No such file or directory: u'/etc/group'
+2016-01-29 16:04:11,661-logger.basedata-INFO-update direct set valid_users = 'a,aaaa' where name = 'tmp'
+2016-01-29 16:04:11,688-logger.basedata-INFO-update direct set valid_users = 'a' where name = 'tmp'
+2016-01-29 16:04:11,708-logger.basedata-INFO-update direct set write_list = 'a,aaa' where name = 'tmp'
+2016-01-29 16:04:11,716-logger.basedata-INFO-update direct set write_list = 'a' where name = 'tmp'
+2016-01-29 16:06:20,766-logger.baseuser-ERROR-A error arise when do cmd 'passwd tmp -u': passwd: Warning: unlocked password would be empty.
+Unlocking password for user tmp.
+passwd: Unsafe operation (use -f to force)

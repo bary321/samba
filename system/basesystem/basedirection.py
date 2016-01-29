@@ -15,7 +15,7 @@ else:
     from samba import logger
 
 log = logger.getLogger('logger.basedirection')
-log.error("test")
+
 
 
 class BaseDirection:

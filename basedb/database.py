@@ -18,7 +18,7 @@ log = logger.getLogger("logger.basedata")
 if os.name == "nt":
     pathofdb = r"E:\workstation\samba\dbase.db3"
 else:
-    pathofdb = r"/home/ftp/samba/dbase.db3"
+    pathofdb = r"/root/PycharmProjects/samba/dbase.db3"
 tableglobal = r"global"
 tabledir = r"direct"
 

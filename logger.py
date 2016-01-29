@@ -1,12 +1,12 @@
 # coding:utf-8
 import logging
 import os
-#???
+
 __author__ = 'bary'
 if os.name == "nt":
     filepath = r"E:\workstation\samba\test.log"
 else:
-    filepath = r"/home/ftp/samba/test.log"
+    filepath = r"/root/PycharmProjects/samba/test.log"
 logger = logging.getLogger('logger')
 logger.setLevel(logging.DEBUG)
 
