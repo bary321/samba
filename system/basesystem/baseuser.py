@@ -23,7 +23,7 @@ reload(sys)
 sys.setdefaultencoding('utf8')
 
 grep = r"cat /etc/passwd | grep '{{ user }}'"
-addcmd = r"useradd -g {{ initgroup }} -M -s /urv/nologin {{ user }}"
+addcmd = r"useradd -g {{ initgroup }} -M -s /sbin/nologin {{ user }}"
 addcmddefault = r"useradd -M -s /usr/sbin/nologin {{ user }}"
 addgroup = r"useradd -G {{ groupname }} {{ user }}"
 delcmd = r"userdel {{ user }}"

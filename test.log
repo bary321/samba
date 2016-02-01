@@ -104,3 +104,7 @@
 2016-01-29 16:06:20,766-logger.baseuser-ERROR-A error arise when do cmd 'passwd tmp -u': passwd: Warning: unlocked password would be empty.
 Unlocking password for user tmp.
 passwd: Unsafe operation (use -f to force)
+2016-02-01 10:17:26,310-logger.baseuser-ERROR-A error arise when do cmd 'setfacl -mRd g:root:rwx /temp/test': setfacl: Option -m: Invalid argument near character 1
+2016-02-01 10:17:26,342-logger.baseuser-ERROR-A error arise when do cmd 'setfacl -mRd u::rwx /temp/test': setfacl: Option -m: Invalid argument near character 1
+2016-02-01 10:19:54,396-logger.baseuser-ERROR-A error arise when do cmd 'setfacl -m -Rd g:root:rwx /temp/test': setfacl: Option -m: Invalid argument near character 1
+2016-02-01 10:19:54,428-logger.baseuser-ERROR-A error arise when do cmd 'setfacl -mRd u::rwx /temp/test': setfacl: Option -m: Invalid argument near character 1
