@@ -8,6 +8,8 @@ import os
 
 from samba.system.basesystem.baseuser import docmd, template
 
+from pprint import pprint
+
 __author__ = 'bary'
 __metaclass__ = type
 
@@ -29,12 +31,12 @@ setaclu = r"setfacl -Rd -m u:{{ user }}:{{ u }} {{ path }}"
 setaclo = r"setfacl -Rd -m u::{{ u }} {{ path }}"
 setaclg = r"setfacl -Rd -m g:{{ group }}:{{ u }} {{ path }}"
 setaclm = r"setfacl -Rd -m m:{{ u }} {{ path }}"
-getacl = r"getfacl {{ path }}"
+getacl = r"getfacl -p {{ path }}"
 
 
 class BaseDirection:
     """
-    this class is designed to complete the operation of the system folder.
+    this class is designed to finish the operation of system folder.
     """
 
     def __init__(self):
@@ -103,21 +105,88 @@ class BaseDirection:
     def changejurisdiction(self, u="", g="", o="", path=""):
         return docmd(chmod, u=u, g=g, o=o, path=path)
 
-    def __createsub(self):
-        pass
-
     def chmod(self, u="", g="", o="", path=""):
         return docmd(chmod, u=u, g=g, o=o, path=path)
-        pass
 
     def chgroup(self, groupname="", path=""):
         return docmd(groupname=groupname, path=path)
 
-    def _aclinfo(self):
-        pass
+    def _aclinfo(self, path=""):
+        cmd = template(getacl, path=path)
+        d, t = commands.getstatusoutput(cmd)
+        a = t.splitlines()
+        temp = dict()
+        temp["file"] = a[0].split(":")[1].strip(" ")
+        temp["owner"] = a[1].split(":")[1].strip(" ")
+        temp["owner's group"] = a[2].split(":")[1].strip(" ")
+        temp["default mask"] = None
+        temp["mask"] = None
+        temp["default group"] = []
+        temp["group"] = []
+        temp["default user"] = []
+        temp["user"] = []
+        temp["default other"] = None
+        temp["other"] = None
+        for i in range(0, 3):
+            del a[0]
+        for e in a:
+            f = e.split(":")
+            g = False
+            if f[0] == "default":
+                g = True
+                del f[0]
+            if f[0] == "user":
+                h = "user"
+                del f[0]
+            if f[0] == "group":
+                h = "group"
+                del f[0]
+            if f[0] == "other":
+                h = "other"
+                del f[0]
+            if f[0] == "mask":
+                h = "mask"
+                del f[0]
+            if len(f[1].split("\t")) == 2:
+                del f[1]
+            if f[0] == "":
+                if h == "user":
+                    f[0] = temp["owner"]
+                elif h == "mask":
+                    if g:
+                        temp["default mask"] = f[1]
+                    else:
+                        temp["mask"] = f[1]
+                    continue
+                elif h == "other":
+                    if g:
+                        temp["default other"] = f[1]
+                    else:
+                        temp["other"] = f[1]
+                    continue
+                else:
+                    f[0] = temp["owner's group"]
+            elif h == "user":
+                if f[0] == temp["owner"]:
+                    continue
+            elif h == "group":
+                if f[0] == temp["owner's group"]:
+                    continue
+            else:
+                pass
+            j = dict()
+            j[f[0]] = f[1]
+            if g:
+                h = "default " + h
+            temp[h].append(j)
+        return temp
 
     def getacl(self, path):
-        return docmd(getacl, path=path)
+        temp = self._aclinfo(path=path)
+        for i in temp.keys():
+            if not temp[i]:
+                del temp[i]
+        return temp
 
     def setaclgroup(self, group="", u="", path=""):
         return docmd(setaclg, group=group, u=u, path=path)
@@ -128,14 +197,30 @@ class BaseDirection:
     def setumask(self, u="", path=""):
         return docmd(setaclm, u=u, path=path)
 
+    def _getaclinfo(self, name="", path=""):
+        temp = self.getacl(path=path)
+        name_d = "default " + name
+        tmp = {name: None, name_d: None}
+        for i in temp.keys():
+            if i == name:
+                tmp[name] = temp[name]
+            elif i == name_d:
+                tmp[name_d] = temp[name_d]
+            else:
+                pass
+        return tmp
+
     def getumask(self, path=""):
-        pass
+        return self._getaclinfo(name="mask", path=path)
 
     def aclgroup(self, path=""):
-        pass
+        return self._getaclinfo(name="group", path=path)
 
     def acluser(self, path=""):
-        pass
+        return self._getaclinfo(name="user", path=path)
+
+    def aclother(self, path=""):
+        return self._getaclinfo(name="other", path=path)
 
     def mkdir(self, path=""):
         return docmd(mkdir, path=path)
@@ -143,19 +228,20 @@ class BaseDirection:
     def deldir(self, path=""):
         return docmd(rmdir, path=path)
 
-    def mvdir(self, path=""):
+    def __mvdir(self, path=""):
         pass
 
-    def mvdirnon(self, path=""):
+    def __mvdirnon(self, path=""):
         pass
 
-    def cpdir(self, path=""):
+    def __cpdir(self, path=""):
         pass
 
 
 if __name__ == '__main__':
     a = BaseDirection()
-    a.mkdir(path=r"/temp/test")
-    a.getall(path=r"/temp/test")
-    a.setaclgroup(group="root", u="rwx", path=r"/temp/test")
-    a.setacluser(user="root", u="rwx", path=r"/temp/test")
+    pprint(a.getacl(path="/"))
+    pprint(a.getumask(path="/"))
+    pprint(a.aclgroup(path="/"))
+    pprint(a.acluser(path="/"))
+    pprint(a.aclother(path="/"))
