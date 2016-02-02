@@ -18,7 +18,7 @@ if os.name == "nt":
 else:
     from samba import logger
 
-log = logger.getLogger('logger.basedirection')
+log = logger.getLogger('logger.basedirectory')
 
 info = r"ls -ld {{ path }}"
 chgrp = r"chgrp -R {{ groupname }} {{ path }}"
@@ -34,7 +34,7 @@ setaclm = r"setfacl -Rd -m m:{{ u }} {{ path }}"
 getacl = r"getfacl -p {{ path }}"
 
 
-class BaseDirection:
+class BaseDirectory:
     """
     this class is designed to finish the operation of system folder.
     """
@@ -239,7 +239,7 @@ class BaseDirection:
 
 
 if __name__ == '__main__':
-    a = BaseDirection()
+    a = BaseDirectory()
     pprint(a.getacl(path="/"))
     pprint(a.getumask(path="/"))
     pprint(a.aclgroup(path="/"))
