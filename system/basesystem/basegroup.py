@@ -28,6 +28,7 @@ gpasswdM = r"gpasswd -M {{ user }} {{ group }}"
 
 class BaseGroup:
     """
+    有一个问题：我的cmd是从user抓过来的，那log的名称会变成user的吗？
 """
 
     def __init__(self):
