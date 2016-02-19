@@ -2,8 +2,8 @@
 import argparse
 __author__ = 'bary'
 
-
-
+parser = argparse.ArgumentParser(prog="Nasio add")
+parser.add_argument()
 
 
 
