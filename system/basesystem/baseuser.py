@@ -33,7 +33,7 @@ csh = r"usermod -s {{ shell }} {{ user }}"
 cid = r"usermod -u {{ uid }} {{ user }}"
 chome = r"usermod -d {{ home }} {{ user }}"
 luser = r"passwd {{ user }} -l"
-uuser = r"passwd {{ user }} -u"
+uuser = r"passwd {{ user }} -u -f"
 error = r"A error arise when do cmd '{{ cmd }}': {{ status }}"
 
 log = logger.getLogger('logger.baseuser')
@@ -44,7 +44,14 @@ def template(tmp, **kwargs):
     return templates.render(kwargs)
 
 
-def docmd(tmp, **kwargs):
+def docmdtmp(loge, tmp, **kwargs):
+    """
+    find a bug when this function named docmd.The log name will always "logger.baseuser".Because
+    i directly use docmd in other module. The logger inside function remain is logger.baseuser.So
+    i write another function to customize the logger inside function.
+    当这个函数直接叫docmd时出现了一个bug。当我直接在其他模块中调用这个函数时，Logger的名字总是baseuser。
+    所以我写了另一个函数来定制Logger的名字
+    """
     templates = Template(tmp)
     cmd = templates.render(kwargs)
     if os.name == "nt":
@@ -54,10 +61,14 @@ def docmd(tmp, **kwargs):
         err, status = commands.getstatusoutput(cmd)
         if err:
             message = template(error, cmd=cmd, status=status)
-            log.error(message)
+            loge.error(message)
             return 1
         else:
             return 0
+
+
+def docmd(tmp, **kwargs):
+    return docmdtmp(log, tmp, **kwargs)
 
 
 class BaseUser:

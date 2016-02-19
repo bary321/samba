@@ -6,7 +6,7 @@ import commands
 
 import os
 
-from samba.system.basesystem.baseuser import docmd, template
+from samba.system.basesystem.baseuser import docmdtmp, template
 
 from pprint import pprint
 
@@ -19,6 +19,11 @@ else:
     from samba import logger
 
 log = logger.getLogger('logger.basedirectory')
+
+
+def docmd(temp, **kwargs):
+    return docmdtmp(log, temp, **kwargs)
+
 
 info = r"ls -ld {{ path }}"
 chgrp = r"chgrp -R {{ groupname }} {{ path }}"
@@ -114,6 +119,10 @@ class BaseDirectory:
     def _aclinfo(self, path=""):
         cmd = template(getacl, path=path)
         d, t = commands.getstatusoutput(cmd)
+        if d != 0:
+            err = "a error arise when do cmd (" + cmd + ")" + " :\n" + t + " "
+            log.error(err)
+            return {}
         a = t.splitlines()
         temp = dict()
         temp["file"] = a[0].split(":")[1].strip(" ")
@@ -240,7 +249,7 @@ class BaseDirectory:
 
 if __name__ == '__main__':
     a = BaseDirectory()
-    pprint(a.getacl(path="/"))
+    pprint(a.getacl(path="/s"))
     pprint(a.getumask(path="/"))
     pprint(a.aclgroup(path="/"))
     pprint(a.acluser(path="/"))

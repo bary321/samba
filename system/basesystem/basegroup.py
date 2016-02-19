@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 import os
 
-from samba.system.basesystem.baseuser import template, docmd
+from samba.system.basesystem.baseuser import template, docmdtmp
 
 import commands
 
@@ -18,6 +18,10 @@ else:
 
 log = logger.getLogger('logger.group')
 
+
+def docmd(temp, **kwargs):
+    return docmdtmp(log, temp, **kwargs)
+
 grep = r"cat /etc/group | grep '{{ group }}'"
 adduser = r"gpasswd -a {{ user }} {{ group }}"
 deluser = r"gpasswd -d {{ user }} {{ group }}"
@@ -28,7 +32,7 @@ gpasswdM = r"gpasswd -M {{ user }} {{ group }}"
 
 class BaseGroup:
     """
-    有一个问题：我的cmd是从user抓过来的，那log的名称会变成user的吗？
+    有一个问题：我的cmd是从user抓过来的，那log的名称会变成user的吗？会有问题，但已解决
 """
 
     def __init__(self):

@@ -108,3 +108,23 @@ passwd: Unsafe operation (use -f to force)
 2016-02-01 10:17:26,342-logger.baseuser-ERROR-A error arise when do cmd 'setfacl -mRd u::rwx /temp/test': setfacl: Option -m: Invalid argument near character 1
 2016-02-01 10:19:54,396-logger.baseuser-ERROR-A error arise when do cmd 'setfacl -m -Rd g:root:rwx /temp/test': setfacl: Option -m: Invalid argument near character 1
 2016-02-01 10:19:54,428-logger.baseuser-ERROR-A error arise when do cmd 'setfacl -mRd u::rwx /temp/test': setfacl: Option -m: Invalid argument near character 1
+2016-02-19 11:39:36,369-logger.baseuser-ERROR-A error arise when do cmd 'gpasswd -a temp tmp': gpasswd: user 'temp' does not exist
+2016-02-19 11:39:36,405-logger.baseuser-ERROR-A error arise when do cmd 'gpasswd -d temp tmp': Removing user temp from group tmp
+gpasswd: user 'temp' is not a member of 'tmp'
+2016-02-19 11:46:55,045-logger.baseuser-ERROR-A error arise when do cmd 'passwd tmp -u': passwd: Warning: unlocked password would be empty.
+Unlocking password for user tmp.
+passwd: Unsafe operation (use -f to force)
+2016-02-19 11:49:32,389-logger.baseuser-DEBUG-test
+2016-02-19 14:35:50,240-logger.group-ERROR-A error arise when do cmd 'gpasswd -a temp tmp': gpasswd: user 'temp' does not exist
+2016-02-19 14:35:50,322-logger.group-ERROR-A error arise when do cmd 'gpasswd -d temp tmp': Removing user temp from group tmp
+gpasswd: user 'temp' is not a member of 'tmp'
+2016-02-19 14:52:58,947-logger.basedirectory-ERROR-a error arise when do cmd: getfacl -p /s/ngetfacl: /s: No such file or directory
+2016-02-19 14:53:31,596-logger.basedirectory-ERROR-a error arise when do cmd: getfacl -p /s//ngetfacl: /s: No such file or directory
+2016-02-19 14:54:26,172-logger.basedirectory-ERROR-a error arise when do cmd: getfacl -p /s /n getfacl: /s: No such file or directory
+2016-02-19 14:54:52,419-logger.basedirectory-ERROR-a error arise when do cmd: getfacl -p /sgetfacl: /s: No such file or directory
+2016-02-19 14:55:36,321-logger.basedirectory-ERROR-a error arise when do cmd (getfacl -p /s) :getfacl: /s: No such file or directory
+2016-02-19 15:16:39,117-logger.basedirectory-ERROR-a error arise when do cmd (getfacl -p /s) :getfacl: /s: No such file or directory 
+2016-02-19 15:16:48,648-logger.basedirectory-ERROR-a error arise 
+ when do cmd (getfacl -p /s) :getfacl: /s: No such file or directory 
+2016-02-19 15:17:07,910-logger.basedirectory-ERROR-a error arise when do cmd (getfacl -p /s) :
+getfacl: /s: No such file or directory 
