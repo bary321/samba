@@ -44,6 +44,7 @@ class BaseData(object):
 
     def getall(self):
         env = Environment(loader=FileSystemLoader('templates'), auto_reload=True)
+        print os.getcwd()
         template = env.get_template(r"smb.muban")
         return template.render(g=self.getglobalinfo()[0], dire=self.getallinfodir())
 
@@ -222,9 +223,10 @@ if __name__ == "__main__":
     a = BaseData()
     # a.addvaliduser(dire="tmp", user="aaaa,bbbb")
     # a.addwriteuser(dire="tmp", user="a")
-    print a.getwritelist(dire="tmp")
-    a.delwritelist(user="a", dire="tmp")
-    print a.getwritelist(dire="tmp")
-    print a.writelistexist(dire="tmp", user="a")
-    a.addwriteuser(dire="tmp", user="a")
-    a.adddir("one", "/nas/")
+    # print a.getwritelist(dire="tmp")
+    # a.delwritelist(user="a", dire="tmp")
+    # print a.getwritelist(dire="tmp")
+    # print a.writelistexist(dire="tmp", user="a")
+    # a.addwriteuser(dire="tmp", user="a")
+    # a.adddir("one", "/nas/")
+    a.getall()
