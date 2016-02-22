@@ -13,7 +13,9 @@ if os.name == "nt":
 else:
     from samba import logger
 
-
+"""attention:line 46 have a specify path for linux.
+   a bug: i use a line __default in datebase for create new line.But it will show when we get
+   information for database which i wish no happen"""
 log = logger.getLogger("logger.basedata")
 if os.name == "nt":
     pathofdb = r"E:\workstation\samba\dbase.db3"
@@ -43,8 +45,7 @@ class BaseData(object):
         return temp.fetchall()
 
     def getall(self):
-        env = Environment(loader=FileSystemLoader('templates'), auto_reload=True)
-        print os.getcwd()
+        env = Environment(loader=FileSystemLoader('/root/PycharmProjects/samba/templates'), auto_reload=True)
         template = env.get_template(r"smb.muban")
         return template.render(g=self.getglobalinfo()[0], dire=self.getallinfodir())
 
@@ -229,4 +230,4 @@ if __name__ == "__main__":
     # print a.writelistexist(dire="tmp", user="a")
     # a.addwriteuser(dire="tmp", user="a")
     # a.adddir("one", "/nas/")
-    a.getall()
+    print a.getall()
