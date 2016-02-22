@@ -17,7 +17,10 @@ line()
 temp.getallinfodir()
 line()
 
-
+for i in temp.getalldire():
+    print i
+    print temp.getusers(i)
+    print "******************"
 
 
 
