@@ -128,3 +128,7 @@ gpasswd: user 'temp' is not a member of 'tmp'
  when do cmd (getfacl -p /s) :getfacl: /s: No such file or directory 
 2016-02-19 15:17:07,910-logger.basedirectory-ERROR-a error arise when do cmd (getfacl -p /s) :
 getfacl: /s: No such file or directory 
+2016-02-22 13:48:27,343-logger.basedirectory-ERROR-a error arise when do cmd (getfacl -p /s) :
+getfacl: /s: No such file or directory 
+2016-02-22 14:08:48,067-logger.basedata-INFO-update direct set write_list = '' where name = 'tmp'
+2016-02-22 14:08:48,075-logger.basedata-INFO-update direct set write_list = 'a' where name = 'tmp'
