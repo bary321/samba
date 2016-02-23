@@ -211,3 +211,4 @@ gpasswd: user 'temp' is not a member of 'tmp'
 2016-02-23 16:26:34,615-logger.getinfo-WARNING-the user public doesn't exist in system.
 2016-02-23 16:26:34,650-logger.getinfo-WARNING-the user oem doesn't exist in system.
 2016-02-23 16:26:34,650-logger.getinfo-WARNING-the user oem doesn't exist in system.
+2016-02-23 16:48:57,662-logger.basedata-INFO-update direct set valid_users = 'c' where name = 'tmp'

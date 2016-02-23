@@ -4,11 +4,13 @@ from samba.system.group import Group
 from samba.system.user import User
 from samba import logger
 from pprint import pprint
+import json
+
 __author__ = 'bary'
 __metaclass__ = type
 
 """this file will user to get all the information we need used in argparse module.
-The data is very messy, but you can fix it out.Believe yourself and just do it."""
+To myself:The data is very messy, but you can fix it out.Believe yourself and just do it."""
 
 log = logger.getLogger("logger.getinfo")
 
@@ -48,6 +50,7 @@ def allwname():
                         wname[k].append(i)
     return wname
 
+
 def alluser():
     user = {}
     t = allvname().keys()
@@ -56,11 +59,11 @@ def alluser():
     for i in t:
         user[i] = {}
         try:
-            user[i]["valid user"] = allvname()[i]
+            user[i]["valid"] = allvname()[i]
         except KeyError:
             pass
         try:
-            user[i]["write list"] = allwname()[i]
+            user[i]["write"] = allwname()[i]
         except KeyError:
             pass
     return user
@@ -107,29 +110,25 @@ def alldir():
     return directory
 
 
-def show_dir(dir=""):
+def getdir(dir=""):
     if not dir:
-        print alldir()
-        return 0
+        return alldir()
     try:
-        print alldir()[dir]
-        return 0
+        return alldir()[dir]
     except KeyError:
-        print "It doesn't exist in configuration."
-        return 1
+        return {}
 
-def show_user(user=""):
+
+def getuser(user=""):
     if not user:
-        print alluser()
-        return 0
+        return alluser()
     try:
-        print alluser()[user]
-        return 0
+        return alluser()[user]
     except KeyError:
-        print "It doesn't exist in configuration"
-        return 1
+        return {}
 
-def show_gruop(group=""):
+
+def getgroup(group=""):
     temp = {}
     if not group:
         temp = allgroups()
@@ -137,73 +136,22 @@ def show_gruop(group=""):
         try:
             temp = {group: allgroups()[group]}
         except KeyError:
-            print "the group you inputed doesn't exist in configuration."
-            return 1
+            return {}
         pass
+        for i in temp[group]:
+            print getuser(i)
     return temp
 
 
-pprint(allgroups())
 
 
+a = {u'admin': {'valid': [u'admin', u'oem'],
+                'write': [u'public', u'repos', u'release']},
+     u'c': {'valid': [u'tmp']},
+     u'oem': {'valid': [u'oem'], 'write': [u'public']},
+     u'public': {'write': [u'public']}}
 
+print json.dumps(a, indent=1)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+def printer(d):
+    pass

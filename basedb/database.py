@@ -231,4 +231,5 @@ if __name__ == "__main__":
     # print a.writelistexist(dire="tmp", user="a")
     # a.addwriteuser(dire="tmp", user="a")
     # a.adddir("one", "/nas/")
+    print a.addvaliduser("tmp", user="c")
     print a.getall()
