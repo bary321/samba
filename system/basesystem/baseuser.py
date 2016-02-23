@@ -117,8 +117,14 @@ class BaseUser:
         except Exception as e:
             error = "some error arise when init basesystem user name of " + user + ": " + str(e)
             log.error(error)
-            """Attention:we may have a bug here.It suppose return a dictionary"""
-            return 1
+            """Attention: return a direction is better than a integer"""
+            return {"name": "",
+                    "id": "",
+                    "group id": "",
+                    "commet": "",
+                    "home dir": "",
+                    "shell": ""
+                    }
 
     def userinfo(self, user=""):
         """

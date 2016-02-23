@@ -165,3 +165,43 @@ getfacl: /s: No such file or directory
 2016-02-23 11:55:29,364-logger.group-ERROR-A error arise when do cmd 'gpasswd -a temp tmp': gpasswd: user 'temp' does not exist
 2016-02-23 11:55:29,395-logger.group-ERROR-A error arise when do cmd 'gpasswd -d temp tmp': Removing user temp from group tmp
 gpasswd: user 'temp' is not a member of 'tmp'
+2016-02-23 13:55:03,583-logger.getinfo-WARNING-the user admin doesn't exist.
+2016-02-23 13:55:03,669-logger.getinfo-WARNING-the user oem doesn't exist.
+2016-02-23 14:00:18,708-logger.getinfo-WARNING-the user admin doesn't exist.
+2016-02-23 14:00:18,752-logger.getinfo-WARNING-the user oem doesn't exist.
+2016-02-23 14:31:28,743-logger.getinfo-WARNING-the user admin doesn't exist.
+2016-02-23 14:31:28,870-logger.getinfo-WARNING-the user oem doesn't exist.
+2016-02-23 14:32:24,036-logger.getinfo-WARNING-the user admin doesn't exist.
+2016-02-23 14:32:24,110-logger.getinfo-WARNING-the user oem doesn't exist.
+2016-02-23 14:32:24,123-logger.getinfo-WARNING-the user admin doesn't exist.
+2016-02-23 14:32:24,167-logger.getinfo-WARNING-the user public doesn't exist.
+2016-02-23 14:32:24,216-logger.getinfo-WARNING-the user oem doesn't exist.
+2016-02-23 14:32:47,925-logger.getinfo-WARNING-the user admin doesn't exist.
+2016-02-23 14:32:47,988-logger.getinfo-WARNING-the user oem doesn't exist.
+2016-02-23 14:32:47,999-logger.getinfo-WARNING-the user admin doesn't exist.
+2016-02-23 14:32:48,040-logger.getinfo-WARNING-the user public doesn't exist.
+2016-02-23 14:32:48,056-logger.getinfo-WARNING-the user oem doesn't exist.
+2016-02-23 14:35:49,723-logger.getinfo-WARNING-the user admin doesn't exist.
+2016-02-23 14:35:49,781-logger.getinfo-WARNING-the user oem doesn't exist.
+2016-02-23 14:35:49,794-logger.getinfo-WARNING-the user admin doesn't exist.
+2016-02-23 14:35:49,864-logger.getinfo-WARNING-the user public doesn't exist.
+2016-02-23 14:35:49,883-logger.getinfo-WARNING-the user oem doesn't exist.
+2016-02-23 14:40:13,934-logger.getinfo-WARNING-the user admin doesn't exist.
+2016-02-23 14:40:13,977-logger.getinfo-WARNING-the user oem doesn't exist.
+2016-02-23 14:47:10,826-logger.getinfo-WARNING-the user admin doesn't exist.
+2016-02-23 14:47:10,881-logger.getinfo-WARNING-the user oem doesn't exist.
+2016-02-23 14:48:12,980-logger.getinfo-WARNING-the user admin doesn't exist.
+2016-02-23 14:48:13,052-logger.getinfo-WARNING-the user public doesn't exist.
+2016-02-23 14:48:13,066-logger.getinfo-WARNING-the user oem doesn't exist.
+2016-02-23 14:48:32,639-logger.getinfo-WARNING-the user admin doesn't exist.
+2016-02-23 14:48:32,704-logger.getinfo-WARNING-the user public doesn't exist.
+2016-02-23 14:48:32,717-logger.getinfo-WARNING-the user oem doesn't exist.
+2016-02-23 15:19:31,613-logger.getinfo-WARNING-the user admin doesn't exist.
+2016-02-23 15:19:31,647-logger.getinfo-WARNING-the user public doesn't exist.
+2016-02-23 15:19:31,656-logger.getinfo-WARNING-the user oem doesn't exist.
+2016-02-23 15:20:11,878-logger.getinfo-WARNING-the user admin doesn't exist in system.
+2016-02-23 15:20:11,925-logger.getinfo-WARNING-the user public doesn't exist in system.
+2016-02-23 15:20:11,938-logger.getinfo-WARNING-the user oem doesn't exist in system.
+2016-02-23 15:20:27,789-logger.getinfo-WARNING-the user admin doesn't exist in system.
+2016-02-23 15:20:27,824-logger.getinfo-WARNING-the user public doesn't exist in system.
+2016-02-23 15:20:27,831-logger.getinfo-WARNING-the user oem doesn't exist in system.

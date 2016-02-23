@@ -25,7 +25,15 @@ class Group(basegroup.BaseGroup):
         return super(Group, self).getgroupID(group=self.name)
 
     def getnumbers(self):
-        return super(Group, self).getnumbers(group=self.name)
+        """
+        this method are different between the others.because there an unexpected error arise:
+        File "/root/PycharmProjects/samba/system/basesystem/basegroup.py", line 94, in getnumbers
+        ID = self.getgroupID(group=group)
+        TypeError: getgroupID() got an unexpected keyword argument 'group'
+        """
+        # return super(Group, self).getnumbers(group=self.name)
+        temp = basegroup.BaseGroup()
+        return temp.getnumbers(group=self.name)
 
     def numberexist(self, user=""):
         return super(Group, self).numberexist(group=self.name, user=user)
@@ -38,6 +46,7 @@ class Group(basegroup.BaseGroup):
 
 
 if __name__ == "__main__":
-    t = Group("a")
+    t = Group("c")
     print t.groupexist()
     print t.getgroupID()
+    print t.getnumbers()

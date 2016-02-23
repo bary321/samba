@@ -57,7 +57,7 @@ class BaseGroup:
                     if attribute[3] == "\n":
                         numbers = ""
                     else:
-                        numbers = attribute[3]
+                        numbers = attribute[3].strip("\n")
                     f.close()
                     return {"name": group,
                             "id": id,
@@ -110,7 +110,7 @@ class BaseGroup:
             for line in f:
                 attribute = line.split(r":")
                 if id == attribute[2]:
-                    temp.append(attribute[0])
+                    temp.append(attribute[0].strip("\n"))
             return temp
 
     def numberexist(self, group="", user=""):
