@@ -100,17 +100,17 @@ class BaseData(object):
         elif m == 4:
             templa = Template("INSERT INTO direct SELECT '{{ dire }}', '{{ path }}',valid_users,force_user,"
                               "force_group,read_only,create_mask,directory_mask,guest_ok,write_list FROM "
-                              "direct WHERE name='tmp'")
+                              "dir WHERE name='tmp'")
             cmd = templa.render(dire=dire, path=path)
         elif m == 5:
             templa = Template("INSERT INTO direct SELECT '{{ dire }}', '{{ path }}',valid_users,force_user,"
                               "force_group,read_only,create_mask,directory_mask,guest_ok, '{{ write_list }}' FROM "
-                              "direct WHERE name='tmp'")
+                              "dir WHERE name='tmp'")
             cmd = templa.render(dire=dire, path=path, write_list=write_list)
         elif m == 7:
             templa = Template("INSERT INTO direct SELECT '{{ dire }}', '{{ path }}','{{ valid_users }}',force_user,"
                               "force_group,read_only,create_mask,directory_mask,guest_ok,'{{ write_list }}' FROM "
-                              "direct WHERE name='tmp'")
+                              "dir WHERE name='tmp'")
             cmd = templa.render(dire=dire, path=path, valid_users=valid_users, write_list=write_list)
         else:
             error = "? m error .value : " + str(m)

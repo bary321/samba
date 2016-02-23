@@ -3,6 +3,7 @@ from samba.basedb import database
 from samba.system.group import Group
 from samba.system.user import User
 from samba import logger
+from pprint import pprint
 __author__ = 'bary'
 __metaclass__ = type
 
@@ -47,6 +48,23 @@ def allwname():
                         wname[k].append(i)
     return wname
 
+def alluser():
+    user = {}
+    t = allvname().keys()
+    t.extend(allwname().keys())
+    t = list(set(t))
+    for i in t:
+        user[i] = {}
+        try:
+            user[i]["valid user"] = allvname()[i]
+        except KeyError:
+            pass
+        try:
+            user[i]["write list"] = allwname()[i]
+        except KeyError:
+            pass
+    return user
+
 
 def allgroups():
     group = {}
@@ -72,8 +90,8 @@ def allgroups():
                     log.warning(w)
                     continue
         else:
-            w = "the user " + i + " doesn't exist in system."
-            log.warning(w)
+            # w = "the user " + i + " doesn't exist in system."
+            # log.warning(w)
             continue
     return group
 
@@ -87,14 +105,45 @@ def alldir():
             directory[i] = None
             directory[i] = temp.getusers(i)
     return directory
-print alldir()
 
 
+def show_dir(dir=""):
+    if not dir:
+        print alldir()
+        return 0
+    try:
+        print alldir()[dir]
+        return 0
+    except KeyError:
+        print "It doesn't exist in configuration."
+        return 1
+
+def show_user(user=""):
+    if not user:
+        print alluser()
+        return 0
+    try:
+        print alluser()[user]
+        return 0
+    except KeyError:
+        print "It doesn't exist in configuration"
+        return 1
+
+def show_gruop(group=""):
+    temp = {}
+    if not group:
+        temp = allgroups()
+    else:
+        try:
+            temp = {group: allgroups()[group]}
+        except KeyError:
+            print "the group you inputed doesn't exist in configuration."
+            return 1
+        pass
+    return temp
 
 
-
-
-
+pprint(allgroups())
 
 
 
