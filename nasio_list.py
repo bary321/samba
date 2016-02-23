@@ -4,18 +4,23 @@ __author__ = 'bary'
 
 
 def showgroup(group):
+    print "show group ", group
     pass
 
 def showuser(user):
+    print "show user ", user
     pass
 
 def showall():
+    print "show all "
     pass
 
 def showdir(dir):
+    print "show dir", dir
     pass
 
 def showcon():
+    print "show con"
     pass
 
 
@@ -25,17 +30,18 @@ group.add_argument("-g", "--group", default="", help="show Group's info or show 
 group.add_argument("-u", "--user", default="", help="show User's info or show all User's")
 group.add_argument("-a", "--all", action="store_true", help="show all info")
 group.add_argument("-d", "--directory", default="", help="show Dir's info or show all Dir's")
-group.add_argument("-c", "--configuration", default="", help="display the samba configuration file")
+group.add_argument("-c", "--configuration", action="store_true", default="", help="display the samba configuration file")
 args = parser.parse_args()
-if args.g:
-    showgroup(args.g)
-elif args.u:
-    showuser(args.u)
-elif args.a:
+print args
+if args.group:
+    showgroup(args.group)
+elif args.user:
+    showuser(args.user)
+elif args.all:
     showall()
-elif args.c:
+elif args.configuration:
     showcon()
-elif args.d:
+elif args.directory:
     showdir(args.d)
 
 
