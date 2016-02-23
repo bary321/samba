@@ -45,6 +45,8 @@ class User(baseuser.BaseUser):
     def userunlock(self):
         return super(User, self).userunlock(user=self.name)
 
+    def showgroups(self):
+        return super(User, self).showgroups(user=self.name)
 
 if __name__ == "__main__":
     a = User("tmp")

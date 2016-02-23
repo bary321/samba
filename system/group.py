@@ -35,3 +35,9 @@ class Group(basegroup.BaseGroup):
 
     def delnumbers(self, user=""):
         return super(Group, self).delnumbers(user=user, group=self.name)
+
+
+if __name__ == "__main__":
+    t = Group("a")
+    print t.groupexist()
+    print t.getgroupID()

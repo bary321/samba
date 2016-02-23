@@ -15,7 +15,8 @@ else:
 
 """attention:line 46 have a specify path for linux.
    a bug: i use a line __default in datebase for create new line.But it will show when we get
-   information for database which i wish no happen"""
+   information for database which i wish no happen.And i hope the get_all() method will not
+   print some space between the directory configurations."""
 log = logger.getLogger("logger.basedata")
 if os.name == "nt":
     pathofdb = r"E:\workstation\samba\dbase.db3"

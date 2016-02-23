@@ -136,3 +136,32 @@ getfacl: /s: No such file or directory
 2016-02-22 15:08:09,447-logger.basedata-INFO-update direct set valid_users = 'a' where name = 'tmp'
 2016-02-22 15:08:09,462-logger.basedata-INFO-update direct set write_list = 'a,aaa' where name = 'tmp'
 2016-02-22 15:08:09,466-logger.basedata-INFO-update direct set write_list = 'a' where name = 'tmp'
+2016-02-23 10:43:41,163-logger.baseuser-ERROR-A error arise when do cmd 'passwd tmp -u -f': passwd: Unknown user name 'tmp'.
+2016-02-23 10:46:50,591-logger.baseuser-ERROR-A error arise when do cmd 'passwd tmp -u -f': passwd: Unknown user name 'tmp'.
+2016-02-23 10:53:23,447-logger.getinfo-WARNING-the user admin doesn't exist.
+2016-02-23 10:53:32,768-logger.getinfo-WARNING-the user admin doesn't exist.
+2016-02-23 10:53:32,802-logger.getinfo-WARNING-the user oem doesn't exist.
+2016-02-23 11:02:07,830-logger.baseuser-ERROR-A error arise when do cmd 'passwd tmp -u -f': passwd: Unknown user name 'tmp'.
+2016-02-23 11:03:12,783-logger.getinfo-WARNING-the user admin doesn't exist.
+2016-02-23 11:03:12,819-logger.getinfo-WARNING-the user oem doesn't exist.
+2016-02-23 11:03:22,238-logger.getinfo-WARNING-the user admin doesn't exist.
+2016-02-23 11:03:22,256-logger.getinfo-WARNING-the user oem doesn't exist.
+2016-02-23 11:32:30,160-logger.getinfo-WARNING-the user admin doesn't exist.
+2016-02-23 11:32:45,989-logger.getinfo-WARNING-the user admin doesn't exist.
+2016-02-23 11:32:46,006-logger.getinfo-WARNING-the user oem doesn't exist.
+2016-02-23 11:33:09,865-logger.getinfo-WARNING-the user admin doesn't exist.
+2016-02-23 11:33:09,881-logger.getinfo-WARNING-the user oem doesn't exist.
+2016-02-23 11:36:08,400-logger.getinfo-WARNING-the user admin doesn't exist.
+2016-02-23 11:36:08,440-logger.getinfo-WARNING-the user oem doesn't exist.
+2016-02-23 11:36:29,814-logger.getinfo-WARNING-the user admin doesn't exist.
+2016-02-23 11:36:29,866-logger.getinfo-WARNING-the user oem doesn't exist.
+2016-02-23 11:36:48,068-logger.getinfo-WARNING-the user admin doesn't exist.
+2016-02-23 11:36:48,102-logger.getinfo-WARNING-the user oem doesn't exist.
+2016-02-23 11:36:59,711-logger.getinfo-WARNING-the user admin doesn't exist.
+2016-02-23 11:36:59,743-logger.getinfo-WARNING-the user oem doesn't exist.
+2016-02-23 11:37:59,515-logger.getinfo-WARNING-the user admin doesn't exist.
+2016-02-23 11:37:59,545-logger.getinfo-WARNING-the user oem doesn't exist.
+2016-02-23 11:42:06,899-logger.getinfo-WARNING-the user admin doesn't exist.
+2016-02-23 11:55:29,364-logger.group-ERROR-A error arise when do cmd 'gpasswd -a temp tmp': gpasswd: user 'temp' does not exist
+2016-02-23 11:55:29,395-logger.group-ERROR-A error arise when do cmd 'gpasswd -d temp tmp': Removing user temp from group tmp
+gpasswd: user 'temp' is not a member of 'tmp'

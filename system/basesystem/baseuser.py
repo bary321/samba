@@ -25,7 +25,7 @@ sys.setdefaultencoding('utf8')
 grep = r"cat /etc/passwd | grep '{{ user }}'"
 addcmd = r"useradd -g {{ initgroup }} -M -s /sbin/nologin {{ user }}"
 addcmddefault = r"useradd -M -s /usr/sbin/nologin {{ user }}"
-addgroup = r"useradd -G {{ groupname }} {{ user }}"
+addgroup = r"usermod -G {{ groupname }} {{ user }}"
 delcmd = r"userdel {{ user }}"
 passwd = r"passwd {{ user }}"
 passwd1 = r"""echo "{{ user }}:{{ password }}" | chpasswd"""
@@ -35,6 +35,7 @@ chome = r"usermod -d {{ home }} {{ user }}"
 luser = r"passwd {{ user }} -l"
 uuser = r"passwd {{ user }} -u -f"
 error = r"A error arise when do cmd '{{ cmd }}': {{ status }}"
+groups = "groups {{ user }}"
 
 log = logger.getLogger('logger.baseuser')
 
@@ -73,7 +74,7 @@ def docmd(tmp, **kwargs):
 
 class BaseUser:
     """
-    this object design to
+    this object design to operate users.
 """
 
     def __init__(self):
@@ -116,12 +117,18 @@ class BaseUser:
         except Exception as e:
             error = "some error arise when init basesystem user name of " + user + ": " + str(e)
             log.error(error)
+            """Attention:we may have a bug here.It suppose return a dictionary"""
             return 1
 
     def userinfo(self, user=""):
+        """
+        why i use print here? Shouldn't this be return?
+        -------
+        change to return
+        """
         if os.name == "nt":
             return {}
-        print self.__userinfo(user=user)
+        return self.__userinfo(user=user)
 
     def changepasswd(self, user=""):
         return docmd(passwd, user=user)
@@ -156,6 +163,14 @@ class BaseUser:
     def userunlock(self, user=""):
         return docmd(uuser, user=user)
 
+    def showgroups(self, user=""):
+        cmd = template(groups, user=user)
+        err, status = commands.getstatusoutput(cmd)
+        if err != 0:
+            error = "A error arise when execute cmd(" + cmd + "):" + status
+            log.error(error)
+            return []
+        return status.split(":")[1].strip(" ").split(" ")
 
 if __name__ == "__main__":
     a = BaseUser()
