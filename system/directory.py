@@ -12,6 +12,9 @@ class Directory(BaseDirectory):
         super(Directory, self).__init__()
         self.path = path
 
+    def pathexist(self, path=""):
+        return super(Directory, self).pathexist(path=self.path)
+
     def changepath(self, path=""):
         self.path = path
         return 0

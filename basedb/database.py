@@ -209,7 +209,7 @@ class BaseData(object):
         try:
             self.getvalidusers(dire=dire)[0].strip(",").split(",").index(user)
             return True
-        except ValueError:
+        except ValueError, AttributeError:
             return False
 
     def writelistexist(self, dire="", user=""):
@@ -217,7 +217,7 @@ class BaseData(object):
         try:
             self.getwritelist(dire=dire)[0].strip(",").split(",").index(user)
             return True
-        except ValueError:
+        except ValueError, AttributeError:
             return False
 
 

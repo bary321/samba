@@ -1,32 +1,21 @@
 # coding:utf-8
 import argparse
+from samba.operation import add
 __author__ = 'bary'
 
-
-def addgrouptodir(group, v, w):
-    pass
-
-def addusertodir(user, v, w):
-    pass
-
 parser = argparse.ArgumentParser(prog="Nasio add")
-group1 = parser.add_mutually_exclusive_group()
-group1.add_argument("-g", "--group", required=True, help="the user group for operation")
-group1.add_argument("-u", "--user", required=True, help="the user for operation")
-parser.add_argument("-v", "--valid", help="")
-parser.add_argument("-w", "--write", help="")
-args = parser.parse_args()
-if args.group:
-    addgrouptodir(args.group, args.v, args.w)
-elif args.user:
-    addusertodir(args.user, args.v, args.w)
-
-
-
-
-
-
-
+group = parser.add_mutually_exclusive_group(required=True)
+group.add_argument("-u", "--user", help="the user name for operation")
+parser.add_argument("-d", "--dir", required=True, help="the user name for operation")
+group.add_argument("-p", "--path", help="only used when option dir exist")
+parser.add_argument("-v", "--valid", action="store_true", help="only used when option dir and user exist")
+parser.add_argument("-w", "--write", action="store_true", help="only used when option dir and user exist")
+args = parser.parse_args(["--dir", "tp", "--user", "admi", "-v", "-w"])
+if args.user:
+    add.adduser(user=args.user, dire=args.dir, valid=args.valid, write=args.write)
+    exit()
+if args.path:
+    add.adddir(dir=args.dir, path=args.path)
 
 
 

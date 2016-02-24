@@ -219,3 +219,18 @@ gpasswd: user 'temp' is not a member of 'tmp'
 2016-02-24 10:13:36,856-logger.baseuser-ERROR-A error arise when do cmd 'useradd -g oem -M -s /sbin/nologin oem': useradd: group 'oem' does not exist
 2016-02-24 10:13:36,930-logger.baseuser-ERROR-A error arise when do cmd 'useradd -g public -M -s /sbin/nologin public': useradd: group 'public' does not exist
 2016-02-24 11:43:07,109-logger.getinfo-ERROR-the group "ad" doesn't exist
+2016-02-24 15:15:46,615-logger.basedirectory-ERROR-a error arise when do cmd (getfacl -p /s) :
+getfacl: /s: No such file or directory 
+2016-02-24 15:16:09,205-logger.basedirectory-ERROR-a error arise when do cmd (getfacl -p /s) :
+getfacl: /s: No such file or directory 
+2016-02-24 15:16:09,290-logger.basedirectory-ERROR-A error arise go get '/s' info
+2016-02-24 15:22:08,429-logger.basedirectory-ERROR-a error arise when do cmd (getfacl -p /s) :
+getfacl: /s: No such file or directory 
+2016-02-24 15:25:01,941-logger.basedata-INFO-INSERT INTO direct SELECT 'temp', '/home/tmp',valid_users,force_user,force_group,read_only,create_mask,directory_mask,guest_ok,write_list FROM dir WHERE name='tmp'
+2016-02-24 15:27:01,126-logger.basedata-INFO-update direct set write_list = 'a' where name = 'tmp'
+2016-02-24 15:27:29,514-logger.basedata-INFO-update direct set valid_users = 'c,a' where name = 'tmp'
+2016-02-24 15:52:25,160-logger.basedata-INFO-INSERT INTO direct SELECT 'tp', '/home/tmp',valid_users,force_user,force_group,read_only,create_mask,directory_mask,guest_ok,write_list FROM dir WHERE name='tmp'
+2016-02-24 15:57:59,751-logger.basedata-INFO-update direct set valid_users = 'admin' where name = 'tp'
+2016-02-24 15:57:59,757-logger.basedata-INFO-update direct set write_list = 'admin' where name = 'tp'
+2016-02-24 15:59:56,690-logger.basedata-INFO-update direct set valid_users = 'admin,admi' where name = 'tp'
+2016-02-24 15:59:56,698-logger.basedata-INFO-update direct set write_list = 'admin,admi' where name = 'tp'

@@ -47,6 +47,14 @@ class BaseDirectory:
     def __init__(self):
         pass
 
+    def pathexist(self, path=""):
+        cmd = template(info, path=path)
+        err, status = commands.getstatusoutput(cmd)
+        if err == 512:
+            return False
+        else:
+            return True
+
     def _getinfo(self, path):
         cmd = template(info, path=path)
         err, att = commands.getstatusoutput(cmd)
@@ -254,3 +262,5 @@ if __name__ == '__main__':
     pprint(a.aclgroup(path="/"))
     pprint(a.acluser(path="/"))
     pprint(a.aclother(path="/"))
+    print a.pathexist("/")
+    print a.pathexist("/s")
