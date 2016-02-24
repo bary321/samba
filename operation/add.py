@@ -41,6 +41,14 @@ def adduser(user, dire, valid=True, write=False):
                         U.createuser(initgroup=g, user=user)
                     else:
                         print "Error:group don't exist.quit"
+                else:
+                    G = Group(user)
+                    if G.groupexist():
+                        print "Error:Can't create group '%s'.It already exist." % user
+                    else:
+                        G.creategroup()
+                        U.createuser(initgroup=user, user=user)
+                adduser(user, dire, valid=valid, write=write)
             else:
                 exit()
         else:

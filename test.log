@@ -234,3 +234,8 @@ getfacl: /s: No such file or directory
 2016-02-24 15:57:59,757-logger.basedata-INFO-update direct set write_list = 'admin' where name = 'tp'
 2016-02-24 15:59:56,690-logger.basedata-INFO-update direct set valid_users = 'admin,admi' where name = 'tp'
 2016-02-24 15:59:56,698-logger.basedata-INFO-update direct set write_list = 'admin,admi' where name = 'tp'
+2016-02-24 16:17:23,245-logger.baseuser-ERROR-A error arise when do cmd 'useradd -g adasd -M -s /sbin/nologin adasd': useradd: group 'adasd' does not exist
+2016-02-24 16:18:15,925-logger.basedata-INFO-update direct set valid_users = 'c,a,adasd' where name = 'tmp'
+2016-02-24 16:18:15,929-logger.basedata-INFO-update direct set write_list = 'a,adasd' where name = 'tmp'
+2016-02-24 16:56:44,967-logger.basedata-INFO-DELETE FROM direct WHERE name = 'tp'
+2016-02-24 17:00:50,536-logger.basedata-INFO-update direct set valid_users = 'a,adasd' where name = 'tmp'

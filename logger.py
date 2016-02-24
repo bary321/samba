@@ -14,7 +14,7 @@ fh = logging.FileHandler(filepath)
 fh.setLevel(logging.DEBUG)
 
 ch = logging.StreamHandler()
-ch.setLevel(logging.DEBUG)
+ch.setLevel(logging.WARNING)
 
 formatter = logging.Formatter('%(asctime)s-%(name)s-%(levelname)s-%(message)s')
 simple = logging.Formatter('%(name)s-%(levelname)s-%(message)s')

@@ -44,6 +44,9 @@ class DirBase(object):
     def getwritelist(self):
         return self.obj.getwritelist(dire=self.name)
 
+    def deldir(self):
+        return self.obj.deldir(dire=self.name)
+
     def addvaliduser(self, user):
         return self.obj.addvaliduser(dire=self.name, user=user)
 
