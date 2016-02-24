@@ -1,119 +1,68 @@
 # coding:utf-8
 import argparse
+from operation import getinfo
+from pprint import pprint
+
 __author__ = 'bary'
 
 
 def showgroup(group):
-    print "show group ", group
-    pass
+    if type(group) == bool:
+        if group:
+            pprint(getinfo.getgroup())
+        return 0
+    pprint(getinfo.getgroup(group))
+
 
 def showuser(user):
-    print "show user ", user
-    pass
+    if type(user) == bool:
+        if user:
+            pprint(getinfo.getuser())
+        return 0
+    pprint(getinfo.getuser(user))
 
-def showall():
-    print "show all "
-    pass
-
-def showdir(dir):
-    print "show dir", dir
-    pass
 
 def showcon():
-    print "show con"
-    pass
+    print(getinfo.all())
+
+
+def showdir(dir):
+    if type(dir) == bool:
+        if dir:
+            pprint(getinfo.getdir())
+        return 0
+    pprint(getinfo.getdir(dir))
 
 
 parser = argparse.ArgumentParser(prog="Nasio list")
-group = parser.add_mutually_exclusive_group(required=True)
-group.add_argument("-g", "--group", default="", help="show Group's info or show all Group's")
-group.add_argument("-u", "--user", default="", help="show User's info or show all User's")
-group.add_argument("-a", "--all", action="store_true", help="show all info")
-group.add_argument("-d", "--directory", default="", help="show Dir's info or show all Dir's")
-group.add_argument("-c", "--configuration", action="store_true", default="", help="display the samba configuration file")
+parser.add_argument("--all", help="show all group or user or dir or configuration",
+                    choices=["user", "dir", "con"],
+                    metavar="( group | user | dir | con )")
+group = parser.add_mutually_exclusive_group(required=False)
+# group.add_argument("-g", "--group", help="show Group's info")
+group.add_argument("--user", help="show User's info")
+# group.add_argument("--all", help="show all info")
+group.add_argument("--dir", help="show Dir's info")
+# group.add_argument("--config", action="store_true", help="display the samba configuration file")
 args = parser.parse_args()
-print args
-if args.group:
-    showgroup(args.group)
-elif args.user:
-    showuser(args.user)
-elif args.all:
-    showall()
-elif args.configuration:
-    showcon()
-elif args.directory:
-    showdir(args.d)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# print args
+if args.all:
+    if args.user or args.dir:
+        print "Don't mix '--all' and other option"
+        exit()
+    if args.all == "user":
+        showuser(True)
+    elif args.all == "dir":
+        showdir(True)
+    elif args.all == "con":
+        showcon()
+
+else:
+    if args.user:
+        showuser(args.user)
+    # elif args.all:
+    #     showall()
+    # elif args.config:
+    #     showcon()
+    elif args.dir:
+        showdir(args.dir)

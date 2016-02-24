@@ -212,3 +212,10 @@ gpasswd: user 'temp' is not a member of 'tmp'
 2016-02-23 16:26:34,650-logger.getinfo-WARNING-the user oem doesn't exist in system.
 2016-02-23 16:26:34,650-logger.getinfo-WARNING-the user oem doesn't exist in system.
 2016-02-23 16:48:57,662-logger.basedata-INFO-update direct set valid_users = 'c' where name = 'tmp'
+2016-02-24 10:12:42,213-logger.baseuser-ERROR-A error arise when do cmd 'useradd -g admin -M -s /sbin/nologin ': useradd: group 'admin' does not exist
+2016-02-24 10:12:42,280-logger.baseuser-ERROR-A error arise when do cmd 'useradd -g oem -M -s /sbin/nologin ': useradd: group 'oem' does not exist
+2016-02-24 10:12:42,349-logger.baseuser-ERROR-A error arise when do cmd 'useradd -g public -M -s /sbin/nologin ': useradd: group 'public' does not exist
+2016-02-24 10:13:36,803-logger.baseuser-ERROR-A error arise when do cmd 'useradd -g admin -M -s /sbin/nologin admin': useradd: group 'admin' does not exist
+2016-02-24 10:13:36,856-logger.baseuser-ERROR-A error arise when do cmd 'useradd -g oem -M -s /sbin/nologin oem': useradd: group 'oem' does not exist
+2016-02-24 10:13:36,930-logger.baseuser-ERROR-A error arise when do cmd 'useradd -g public -M -s /sbin/nologin public': useradd: group 'public' does not exist
+2016-02-24 11:43:07,109-logger.getinfo-ERROR-the group "ad" doesn't exist

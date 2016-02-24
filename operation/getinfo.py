@@ -6,15 +6,18 @@ from samba import logger
 from pprint import pprint
 import json
 
-__author__ = 'bary'
-__metaclass__ = type
-
 """this file will user to get all the information we need used in argparse module.
 To myself:The data is very messy, but you can fix it out.Believe yourself and just do it."""
+
+__author__ = 'bary'
+__metaclass__ = type
 
 log = logger.getLogger("logger.getinfo")
 
 temp = database.BaseData()
+
+def all():
+    return temp.getall()
 
 
 def allvname():
@@ -129,29 +132,25 @@ def getuser(user=""):
 
 
 def getgroup(group=""):
-    temp = {}
+    tmp = {}
+    t = {}
     if not group:
-        temp = allgroups()
+        tmp = allgroups()
+        for i in tmp.keys():
+            t.update(getgroup(i))
+        return t
     else:
         try:
-            temp = {group: allgroups()[group]}
+            tmp = {group: allgroups()[group]}
         except KeyError:
+            error = "the group \"" + group + "\" doesn't exist"
+            log.error(error)
             return {}
-        pass
-        for i in temp[group]:
-            print getuser(i)
-    return temp
+        tp = {group: {}}
+        for i in tmp[group]:
+            tp[group][i] = getuser(i)
+        return tp
 
 
-
-
-a = {u'admin': {'valid': [u'admin', u'oem'],
-                'write': [u'public', u'repos', u'release']},
-     u'c': {'valid': [u'tmp']},
-     u'oem': {'valid': [u'oem'], 'write': [u'public']},
-     u'public': {'write': [u'public']}}
-
-print json.dumps(a, indent=1)
-
-def printer(d):
-    pass
+if __name__ == "__main__":
+    print allgroups()

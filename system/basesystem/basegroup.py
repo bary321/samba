@@ -109,7 +109,7 @@ class BaseGroup:
             temp = []
             for line in f:
                 attribute = line.split(r":")
-                if id == attribute[2]:
+                if id == attribute[3]:
                     temp.append(attribute[0].strip("\n"))
             return temp
 
@@ -128,7 +128,7 @@ class BaseGroup:
 
 if __name__ == "__main__":
     a = BaseGroup()
-    print "create group:", a.creategroup(group="tmp")
+    """print "create group:", a.creategroup(group="tmp")
     print "group exist:", a.groupexist(group="tmp")
     print "groupinfo:", a.groupinfo(group="tmp")
     print "get 'tmp' ID:", a.getgroupID(group="tmp")
@@ -141,3 +141,5 @@ if __name__ == "__main__":
     print "delgroup:", a.delgroup(group="tmp")
     print "group exist", a.groupexist(group="tmp")
     print "groupinfo", a.groupinfo(group="tmp")
+"""
+    print a.getnumbers("admin")
