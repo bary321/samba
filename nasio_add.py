@@ -3,6 +3,7 @@
 
 import argparse
 from samba.operation import add
+
 __author__ = 'bary'
 
 parser = argparse.ArgumentParser(prog="Nasio add")
@@ -21,71 +22,3 @@ if args.user:
     add.adduser(user=args.user, dire=args.dir, valid=args.valid, write=args.write)
     add.writetosmb()
     exit()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

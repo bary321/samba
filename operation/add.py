@@ -64,8 +64,10 @@ def adduser(user, dire, valid=True, write=False):
                 else:
                     Dir.addwriteuser(user)
 
+
 def writetosmb():
     return data.writetosmb()
+
 
 if __name__ == "__main__":
     adddir('tp', '/home/tp')

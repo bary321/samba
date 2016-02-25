@@ -178,6 +178,7 @@ class BaseUser:
             return []
         return status.split(":")[1].strip(" ").split(" ")
 
+
 if __name__ == "__main__":
     a = BaseUser()
     print template(grep, user="tmp")

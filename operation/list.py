@@ -16,6 +16,7 @@ log = logger.getLogger("logger.getinfo")
 
 temp = database.BaseData()
 
+
 def all():
     return temp.getall()
 
