@@ -48,6 +48,7 @@ class BaseData(object):
         return temp.fetchall()
 
     def getall(self):
+        """Should do something to remove the space line in the result."""
         env = Environment(loader=FileSystemLoader('/root/PycharmProjects/samba/templates'), auto_reload=True)
         template = env.get_template(r"smb.muban")
         return template.render(g=self.getglobalinfo()[0], dire=self.getallinfodir())
