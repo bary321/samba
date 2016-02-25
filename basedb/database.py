@@ -13,7 +13,9 @@ if os.name == "nt":
 else:
     from samba import logger
 
-"""attention:line 46 have a specify path for linux.
+SMBCONF = "/etc/samba/smb.conf"
+
+"""attention:line 46 in getall() method have a specify path for linux.
    a bug: i use a line __default in datebase for create new line.But it will show when we get
    information for database which i wish no happen.And i hope the get_all() method will not
    print some space between the directory configurations."""
@@ -220,6 +222,15 @@ class BaseData(object):
         except ValueError, AttributeError:
             return False
 
+    def writetosmb(self):
+        f = open(SMBCONF, r"w")
+        try:
+            f.write(self.getall())
+            return 0
+        finally:
+            f.close()
+            return 1
+
 
 if __name__ == "__main__":
     a = BaseData()
@@ -233,3 +244,4 @@ if __name__ == "__main__":
     # a.adddir("one", "/nas/")
     print a.addvaliduser("tmp", user="c")
     print a.getall()
+    a.writetosmb()

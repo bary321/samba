@@ -65,6 +65,9 @@ class DirBase(object):
     def writelistexit(self, user):
         return self.obj.writelistexist(dire=self.name, user=user)
 
+    def writetosmb(self):
+        return self.obj.writetosmb()
+
 
 if __name__ == "__main__":
     a = DirBase(dire="tmp")
