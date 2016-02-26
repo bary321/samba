@@ -246,6 +246,6 @@ if __name__ == "__main__":
     # a.addwriteuser(dire="tmp", user="a")
     # a.adddir("one", "/nas/")
     # print a.addvaliduser("tmp", user="c")
-    # print a.getall()
-    # a.writetosmb()
+    print a.getall()
+    a.writetosmb()
     print a.getglobalinfo()

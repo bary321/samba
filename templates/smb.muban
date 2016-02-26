@@ -2,6 +2,7 @@
     dos charset = {{ g[1] }}
     server string = {{ g[2] }}
     map to guest = {{ g[3] }}
+    browseable = yes
     obey pam restrictions = {{ g[4] }}
     pam password change = {{ g[5] }}
     passwd program = /usr/bin/passwd %u
