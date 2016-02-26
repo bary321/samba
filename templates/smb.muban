@@ -1,11 +1,11 @@
 [global]
-    dos charset = {{ g[0] }}
-    server string = {{ g[1] }}
-    map to guest = {{ g[2] }}
-    obey pam restrictions = {{ g[3] }}
+    dos charset = {{ g[1] }}
+    server string = {{ g[2] }}
+    map to guest = {{ g[3] }}
+    obey pam restrictions = {{ g[4] }}
     pam password change = {{ g[4] }}
-    passwd program = {{ g[5] }}
-    passwd chat = {{ g[6] }}
+    passwd program = /usr/bin/passwd %u
+    passwd chat = *Enter\snew\s*\spassword:* %n\n *Retype\snew\s*\spassword:* %n\n *password\supdated\ssuccessfully*
     unix password sync = {{ g[7] }}
     syslog = {{ g[8] }}
     log file = {{ g[9]}}
@@ -15,13 +15,26 @@
     panic action = {{ g[13] }}
     idmap config * : backend = {{ g[15] }}
 
+[printers]
+    comment = All Printers
+    path = /var/spool/samba
+    create mask = 0700
+    printable = Yes
+    print ok = Yes
+    browseable = No
+
+[print$]
+    comment = Printer Drivers
+    path = /var/lib/samba/printers
+
+
 {% for i in dire %}
 [{{ i[0] }}]
     path = {{ i[1] }}
     {% if i[2] %}
     valid users = {{ i[2] }}
     {% endif %}
-    force users = {{ i[3] }}
+    force user = {{ i[3] }}
     force group = {{ i[4] }}
     read only = {{ i[5] }}
     create mask = {{ i[6] }}
