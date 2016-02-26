@@ -3,16 +3,16 @@
     server string = {{ g[2] }}
     map to guest = {{ g[3] }}
     obey pam restrictions = {{ g[4] }}
-    pam password change = {{ g[4] }}
+    pam password change = {{ g[5] }}
     passwd program = /usr/bin/passwd %u
     passwd chat = *Enter\snew\s*\spassword:* %n\n *Retype\snew\s*\spassword:* %n\n *password\supdated\ssuccessfully*
-    unix password sync = {{ g[7] }}
-    syslog = {{ g[8] }}
-    log file = {{ g[9]}}
-    max log size = {{ g[10] }}
-    dns proxy = {{ g[11] }}
-    usershare allow guests = {{ g[12] }}
-    panic action = {{ g[13] }}
+    unix password sync = {{ g[8] }}
+    syslog = {{ g[9] }}
+    log file = {{ g[10]}}
+    max log size = {{ g[11] }}
+    dns proxy = {{ g[12] }}
+    usershare allow guests = {{ g[13] }}
+    panic action = {{ g[14] }}
     idmap config * : backend = {{ g[15] }}
 
 [printers]

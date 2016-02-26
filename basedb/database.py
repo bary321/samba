@@ -12,8 +12,10 @@ if os.name == "nt":
     import logger
 else:
     from samba import logger
-
-SMBCONF = "/etc/samba/smb.conf"
+if os.name == "nt":
+    SMBCONF = r"E:/workstation/samba/smb.conf"
+else:
+    SMBCONF = "/etc/samba/smb.conf"
 
 """attention:line 46 in getall() method have a specify path for linux.
    a bug: i use a line __default in datebase for create new line.But it will show when we get
@@ -243,6 +245,7 @@ if __name__ == "__main__":
     # print a.writelistexist(dire="tmp", user="a")
     # a.addwriteuser(dire="tmp", user="a")
     # a.adddir("one", "/nas/")
-    print a.addvaliduser("tmp", user="c")
-    print a.getall()
-    a.writetosmb()
+    # print a.addvaliduser("tmp", user="c")
+    # print a.getall()
+    # a.writetosmb()
+    print a.getglobalinfo()
