@@ -10,6 +10,8 @@ import os
 
 import sys
 
+from platform import platform
+
 __author__ = 'bary'
 __metaclass__ = type
 
@@ -22,9 +24,23 @@ reload(sys)
 
 sys.setdefaultencoding('utf8')
 
+def definesys():
+    t = platform()
+    t.split("-")
+    if "centos" in t.split("-"):
+        return 0
+    elif "Ubuntu" in t.split('-'):
+        return 1
+    elif "Windows" in t.split('-'):
+        return -1
+
 grep = r"cat /etc/passwd | grep '{{ user }}'"
-addcmd = r"useradd -g {{ initgroup }} -M -s /sbin/nologin {{ user }}"
-addcmddefault = r"useradd -M -s /usr/sbin/nologin {{ user }}"
+if definesys() == 0:
+    addcmd = r"useradd -g {{ initgroup }} -M -s /usr/sbin/nologin {{ user }}"
+    addcmddefault = r"useradd -M -s /usr/sbin/nologin {{ user }}"
+elif definesys() == 1:
+    addcmd = r"useradd -g {{ initgroup }} -M -s /bin/false {{ user }}"
+    addcmddefault = r"useradd -M -s /bin/false {{ user }}"
 addgroup = r"usermod -G {{ groupname }} {{ user }}"
 delcmd = r"userdel {{ user }}"
 passwd = r"passwd {{ user }}"
@@ -145,7 +161,7 @@ class BaseUser:
     def createuser(self, initgroup="", user=""):
         return docmd(addcmd, initgroup=initgroup, user=user)
 
-    def cuserdef(self, user=""):
+    def createuserdef(self, user=""):
         return docmd(addcmddefault, user=user)
 
     def deluser(self, user=""):
@@ -184,7 +200,7 @@ if __name__ == "__main__":
     print template(grep, user="tmp")
     print "user='tmp' exist", a.userexist(user="tmp")
     print a.userinfo(user="tmp")
-    print a.cuserdef(user="tmp")
+    print a.createuserdef(user="tmp")
     print "user='tmp' exist", a.userexist(user="tmp")
     print a.changehomedir(home="/home/tmp", user="tmp"), "changedir"
     print a.userinfo(user="tmp")
@@ -199,3 +215,6 @@ if __name__ == "__main__":
     print a.userinfo(user="tmp")
     print a.deluser(user="tmp"), "del user"
     print "user='tmp' exist", a.userexist(user="tmp")
+    print a.createuserdef("tmmp"), "createuserdef"
+    print a.changepasswd("tmmp")
+    print a.deluser("tmmp")

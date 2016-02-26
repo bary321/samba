@@ -24,8 +24,8 @@ class User(baseuser.BaseUser):
     def createuser(self, initgroup="", user=""):
         return super(User, self).createuser(initgroup=initgroup, user=user)
 
-    def cuserdef(self):
-        return super(User, self).cuserdef(self.name)
+    def createuserdef(self):
+        return super(User, self).createuserdef(self.name)
 
     def deluser(self):
         return super(User, self).deluser(user=self.name)
