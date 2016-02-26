@@ -1,19 +1,33 @@
 [global]
-    dos charset = {{ g[0] }}
-    server string = {{ g[1] }}
-    map to guest = {{ g[2] }}
-    obey pam restrictions = {{ g[3] }}
-    pam password change = {{ g[4] }}
-    passwd program = {{ g[5] }}
-    passwd chat = {{ g[6] }}
-    unix password sync = {{ g[7] }}
-    syslog = {{ g[8] }}
-    log file = {{ g[9]}}
-    max log size = {{ g[10] }}
-    dns proxy = {{ g[11] }}
-    usershare allow guests = {{ g[12] }}
-    panic action = {{ g[13] }}
+    dos charset = {{ g[1] }}
+    server string = {{ g[2] }}
+    map to guest = {{ g[3] }}
+    browseable = yes
+    obey pam restrictions = {{ g[4] }}
+    pam password change = {{ g[5] }}
+    passwd program = /usr/bin/passwd %u
+    passwd chat = *Enter\snew\s*\spassword:* %n\n *Retype\snew\s*\spassword:* %n\n *password\supdated\ssuccessfully*
+    unix password sync = {{ g[8] }}
+    syslog = {{ g[9] }}
+    log file = {{ g[10]}}
+    max log size = {{ g[11] }}
+    dns proxy = {{ g[12] }}
+    usershare allow guests = {{ g[13] }}
+    panic action = {{ g[14] }}
     idmap config * : backend = {{ g[15] }}
+
+[printers]
+    comment = All Printers
+    path = /var/spool/samba
+    create mask = 0700
+    printable = Yes
+    print ok = Yes
+    browseable = No
+
+[print$]
+    comment = Printer Drivers
+    path = /var/lib/samba/printers
+
 
 {% for i in dire %}
 [{{ i[0] }}]
@@ -21,7 +35,7 @@
     {% if i[2] %}
     valid users = {{ i[2] }}
     {% endif %}
-    force users = {{ i[3] }}
+    force user = {{ i[3] }}
     force group = {{ i[4] }}
     read only = {{ i[5] }}
     create mask = {{ i[6] }}
