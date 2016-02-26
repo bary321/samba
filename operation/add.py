@@ -39,6 +39,11 @@ def adduser(user, dire, valid=True, write=False):
                     G = Group(g)
                     if G.groupexist():
                         U.createuser(initgroup=g, user=user)
+                        p = raw_input("Input passwd:(default is the user name)")
+                        if not p:
+                            U.changepasswdnon("%s" % user)
+                        else:
+                            U.changepasswdnon(p)
                     else:
                         print "Error:the group named %s don't exist.quit" % g
                 else:
@@ -48,6 +53,11 @@ def adduser(user, dire, valid=True, write=False):
                     else:
                         G.creategroup()
                         U.createuser(initgroup=user, user=user)
+                        p = raw_input("Input passwd:(default is the user name)")
+                        if not p:
+                            U.changepasswdnon("%s" % user)
+                        else:
+                            U.changepasswdnon(p)
                 adduser(user, dire, valid=valid, write=write)
             else:
                 exit()
