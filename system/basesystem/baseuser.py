@@ -24,23 +24,41 @@ reload(sys)
 
 sys.setdefaultencoding('utf8')
 
+
 def definesys():
+    """
+    distinguish which platform the program run with.
+    """
     t = platform()
-    t.split("-")
     if "centos" in t.split("-"):
         return 0
-    elif "Ubuntu" in t.split('-'):
+    elif "Ubuntu" or "debian" in t.split('-'):
         return 1
     elif "Windows" in t.split('-'):
         return -1
+    else:
+        raise SystemError("unrecognized system %s" % platform())
 
-grep = r"cat /etc/passwd | grep '{{ user }}'"
-if definesys() == 0:
-    addcmd = r"useradd -g {{ initgroup }} -M -s /usr/sbin/nologin {{ user }}"
-    addcmddefault = r"useradd -M -s /usr/sbin/nologin {{ user }}"
-elif definesys() == 1:
-    addcmd = r"useradd -g {{ initgroup }} -M -s /bin/false {{ user }}"
-    addcmddefault = r"useradd -M -s /bin/false {{ user }}"
+
+grep = r"cat /etc/passwd | grep '^{{ user }}:'"
+
+
+def difaddcmd():
+    if definesys() == 0:
+        return r"useradd -g {{ initgroup }} -M -s /usr/sbin/nologin {{ user }}"
+    elif definesys() == 1:
+        return r"useradd -g {{ initgroup }} -M -s /bin/false {{ user }}"
+
+
+def difaddcmddefault():
+    if definesys() == 0:
+        return r"useradd -M -s /usr/sbin/nologin {{ user }}"
+    elif definesys() == 1:
+        return r"useradd -M -s /bin/false {{ user }}"
+
+
+addcmd = difaddcmd()
+addcmddefault = difaddcmddefault()
 addgroup = r"usermod -G {{ groupname }} {{ user }}"
 delcmd = r"userdel {{ user }}"
 passwd = r"passwd {{ user }}"

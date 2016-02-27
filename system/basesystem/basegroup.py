@@ -23,7 +23,7 @@ def docmd(temp, **kwargs):
     return docmdtmp(log, temp, **kwargs)
 
 
-grep = r"cat /etc/group | grep '{{ group }}'"
+grep = r"cat /etc/group | grep '^{{ group }}$'"
 adduser = r"gpasswd -a {{ user }} {{ group }}"
 deluser = r"gpasswd -d {{ user }} {{ group }}"
 addg = r"groupadd {{ group }}"

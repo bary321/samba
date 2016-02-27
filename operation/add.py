@@ -34,7 +34,7 @@ def adduser(user, dire, valid=True, write=False):
             y = raw_input("user %s don't exist.create now?(Y/y)" % user)
             y.lower()
             if y == "y":
-                g = raw_input("create with user name or other?(input noting or existed group)")
+                g = raw_input("create user with the same name or other group?(input noting or existed group)")
                 if g:
                     G = Group(g)
                     if G.groupexist():
