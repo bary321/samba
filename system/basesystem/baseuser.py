@@ -73,6 +73,7 @@ uuser = r"passwd {{ user }} -u -f"
 error = r"A error arise when do cmd '{{ cmd }}': {{ status }}"
 groups = "groups {{ user }}"
 
+
 log = logger.getLogger('logger.baseuser')
 
 
